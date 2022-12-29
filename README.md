@@ -1,4 +1,4 @@
 # data analysis pipeline
 This repository contians several Jupyter notebooks describing set of pre-defined functions designed to query, clean, and process raw data stored in PCORnet CDM format. You may review set of pre-defined functions for each step in described in details in its own Jupyter notebook. You may also refer to [pipeline_implementation.ipynb](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/pipeline_implementation.ipynb) for a comprehensive example of a data analysis pipeline from start to finish.
 
-![data analysis pipeline overview](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/data_analysis_pipeline.png?raw=true)
+![data analysis pipeline overview](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/misc/data_analysis_pipeline.png?raw=true)
