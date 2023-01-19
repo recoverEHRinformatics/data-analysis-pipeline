@@ -106,6 +106,24 @@ def get_lab_pts(index_all: pd.DataFrame, patid_column='syn_pt_id'):
     return covid_lab
 
 
+def get_dx_pts(index_all: pd.DataFrame, patid_column='syn_pt_id'):
+    '''get_dx_pts finds the list of all patients with at least one COVID-19 dx 
+
+    Args:
+        index_all (pd.DataFrame): a dataframe contianing all COVID-19 indications.
+        patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
+
+    Returns:
+        list: all patients with at least one dx
+    '''
+
+    covid_dx = index_all[index_all['index_type'] == 'covid_dx']
+
+    covid_dx = list(set(covid_dx[patid_column]))
+
+    return covid_dx
+
+
 def get_ip_dx_pts(index_all: pd.DataFrame, patid_column='syn_pt_id'):
     '''get_ip_dx_pts finds the list of all patients with at least one COVID-19 dx in an inpatient setting
 
@@ -168,6 +186,41 @@ def get_two_av_dx_pts(index_all: pd.DataFrame, patid_column='syn_pt_id'):
     return covid_av_two
 
 
+def get_complications_pts(index_all: pd.DataFrame, patid_column='syn_pt_id'):
+    '''get_complications_pts finds the list of all patients with at least one COVID-19 complication (J12.82, M35.81)
+
+    Args:
+        index_all (pd.DataFrame): a dataframe contianing all COVID-19 indications.
+        patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
+
+    Returns:
+        list: all patients with at least one COVID-19 complication (J12.82, M35.81)
+    '''
+
+    covid_complications = index_all[index_all['index_type'] == 'complications']
+
+    covid_complications = list(set(covid_complications[patid_column]))
+
+    return covid_complications
+
+
+def get_pasc_pts(index_all:pd.DataFrame, patid_column='syn_pt_id'):
+    '''get_pasc_pts finds the list of all patients with at least one pasc dx (U07.1)
+
+    Args:
+        index_all (pd.DataFrame): a dataframe contianing all COVID-19 indications.
+        patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
+
+    Returns:
+        list: all patients with at least one pasc dx (U07.1)
+    '''
+
+    covid_pasc = index_all[index_all.index_type=='paxlovid']
+    covid_pasc = list(set(covid_pasc[patid_column]))
+
+    return covid_pasc
+
+
 def get_paxlovid_pts(index_all:pd.DataFrame, patid_column='syn_pt_id'):
     '''get_paxlovid_pts finds the list of all patients with at least one paxlovid prescription
 
@@ -183,6 +236,23 @@ def get_paxlovid_pts(index_all:pd.DataFrame, patid_column='syn_pt_id'):
     covid_paxlovid = list(set(covid_paxlovid[patid_column]))
 
     return covid_paxlovid
+
+
+def get_remdesivir_pts(index_all:pd.DataFrame, patid_column='syn_pt_id'):
+    '''get_remdesivir_pts finds the list of all patients with at least one remdesivir prescription
+
+    Args:
+        index_all (pd.DataFrame): a dataframe contianing all COVID-19 indications.
+        patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
+
+    Returns:
+        list: all patients with at one remdesivir prescription
+    '''
+
+    covid_remdesivir = index_all[index_all.index_type=='paxlovid']
+    covid_remdesivir = list(set(covid_remdesivir[patid_column]))
+
+    return covid_remdesivir
 
 
 def get_index_event(df: pd.DataFrame, index_date_column='index_date', patid_column='syn_pt_id', start_date='03/01/2020', end_date='03/01/2023'):
