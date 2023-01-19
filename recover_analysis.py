@@ -427,7 +427,7 @@ def get_pasc_subphenotype(pasc_diff: pd.DataFrame, patid_column='syn_pt_id'):
     return pasc_subphenotype
 
 
-def get_pasc_pts(index:pd.DataFrame, pasc_yn:pd.DataFrame, pasc_subphenotype:pd.DataFrame, patid_column='syn_pt_id'):
+def get_pasc_list(index:pd.DataFrame, pasc_yn:pd.DataFrame, pasc_subphenotype:pd.DataFrame, patid_column='syn_pt_id'):
     '''get_pasc_pts function takes in a series of custom tables resulting from other pre-defined function to generate a list of patients
     with their PASC status, subphenotype, and the index date. Please note this function only works for when the patient has one subphenotype.
 
