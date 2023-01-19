@@ -215,7 +215,7 @@ def get_pasc_pts(index_all:pd.DataFrame, patid_column='syn_pt_id'):
         list: all patients with at least one pasc dx (U07.1)
     '''
 
-    covid_pasc = index_all[index_all.index_type=='paxlovid']
+    covid_pasc = index_all[index_all.index_type=='pasc']
     covid_pasc = list(set(covid_pasc[patid_column]))
 
     return covid_pasc
