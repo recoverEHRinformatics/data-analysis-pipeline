@@ -1,0 +1,295 @@
+category,dx_type,dx,score,dx_clean
+Acute myocardial infarction,I10,I21,1,I21
+Acute myocardial infarction,I10,I22,1,I22
+Acute myocardial infarction,I10,I252,1,I25.2
+Acute myocardial infarction,I9,410,1,410
+Acute myocardial infarction,I9,412,1,412
+Congestive heart failure,I10,I50,1,I50
+Congestive heart failure,I9,428,1,428
+Peripheral vascular disease,I9,441,1,441
+Peripheral vascular disease,I9,4439,1,443.9
+Peripheral vascular disease,I9,7854,1,785.4
+Peripheral vascular disease,I9,V434,1,V43.4
+Peripheral vascular disease,I10,I71,1,I71
+Peripheral vascular disease,I10,I790,1,I79.0
+Peripheral vascular disease,I10,I739,1,I73.9
+Peripheral vascular disease,I10,R02,1,R02
+Peripheral vascular disease,I10,Z958,1,Z95.8
+Peripheral vascular disease,I10,Z959,1,Z95.9
+Cerebral vascular accident,I9,430,1,430
+Cerebral vascular accident,I9,431,1,431
+Cerebral vascular accident,I9,432,1,432
+Cerebral vascular accident,I9,433,1,433
+Cerebral vascular accident,I9,434,1,434
+Cerebral vascular accident,I9,435,1,435
+Cerebral vascular accident,I9,436,1,436
+Cerebral vascular accident,I9,437,1,437
+Cerebral vascular accident,I9,438,1,438
+Cerebral vascular accident,I10,I60,1,I60
+Cerebral vascular accident,I10,I61,1,I61
+Cerebral vascular accident,I10,I62,1,I62
+Cerebral vascular accident,I10,I63,1,I63
+Cerebral vascular accident,I10,I65,1,I65
+Cerebral vascular accident,I10,I66,1,I66
+Cerebral vascular accident,I10,G450,1,G45.0
+Cerebral vascular accident,I10,G451,1,G45.1
+Cerebral vascular accident,I10,G452,1,G45.2
+Cerebral vascular accident,I10,G458,1,G45.8
+Cerebral vascular accident,I10,G459,1,G45.9
+Cerebral vascular accident,I10,G46,1,G46
+Cerebral vascular accident,I10,I64,1,I64
+Cerebral vascular accident,I10,G454,1,G45.4
+Cerebral vascular accident,I10,I670,1,I67.0
+Cerebral vascular accident,I10,I671,1,I67.1
+Cerebral vascular accident,I10,I672,1,I67.2
+Cerebral vascular accident,I10,I674,1,I67.4
+Cerebral vascular accident,I10,I675,1,I67.5
+Cerebral vascular accident,I10,I676,1,I67.6
+Cerebral vascular accident,I10,I677,1,I67.7
+Cerebral vascular accident,I10,I678,1,I67.8
+Cerebral vascular accident,I10,I679,1,I67.9
+Cerebral vascular accident,I10,I681,1,I68.1
+Cerebral vascular accident,I10,I682,1,I68.2
+Cerebral vascular accident,I10,I688,1,I68.8
+Cerebral vascular accident,I10,I69,1,I69
+Dementia,I9,290,1,290
+Dementia,I10,F00,1,F00
+Dementia,I10,F01,1,F01
+Dementia,I10,F02,1,F02
+Dementia,I10,F051,1,F05.1
+Pulmonary disease,I9,490,1,490
+Pulmonary disease,I9,491,1,491
+Pulmonary disease,I9,492,1,492
+Pulmonary disease,I9,493,1,493
+Pulmonary disease,I9,494,1,494
+Pulmonary disease,I9,495,1,495
+Pulmonary disease,I9,496,1,496
+Pulmonary disease,I9,500,1,500
+Pulmonary disease,I9,501,1,501
+Pulmonary disease,I9,502,1,502
+Pulmonary disease,I9,503,1,503
+Pulmonary disease,I9,504,1,504
+Pulmonary disease,I9,505,1,505
+Pulmonary disease,I10,J40,1,J40
+Pulmonary disease,I10,J41,1,J41
+Pulmonary disease,I10,J42,1,J42
+Pulmonary disease,I10,J44,1,J44
+Pulmonary disease,I10,J43,1,J43
+Pulmonary disease,I10,J45,1,J45
+Pulmonary disease,I10,J46,1,J46
+Pulmonary disease,I10,J47,1,J47
+Pulmonary disease,I10,J67,1,J67
+Pulmonary disease,I10,J44,1,J44
+Pulmonary disease,I10,J60,1,J60
+Pulmonary disease,I10,J61,1,J61
+Pulmonary disease,I10,J62,1,J62
+Pulmonary disease,I10,J63,1,J63
+Pulmonary disease,I10,J66,1,J66
+Pulmonary disease,I10,J64,1,J64
+Pulmonary disease,I10,J65,1,J65
+Connective tissue disorder,I9,7100,1,710.0
+Connective tissue disorder,I9,7101,1,710.1
+Connective tissue disorder,I9,7104,1,710.4
+Connective tissue disorder,I9,7140,1,714.0
+Connective tissue disorder,I9,7141,1,714.1
+Connective tissue disorder,I9,7142,1,714.2
+Connective tissue disorder,I9,71481,1,714.81
+Connective tissue disorder,I9,5171,1,517.1
+Connective tissue disorder,I9,725,1,725
+Connective tissue disorder,I10,M32,1,M32
+Connective tissue disorder,I10,M34,1,M34
+Connective tissue disorder,I10,M332,1,M33.2
+Connective tissue disorder,I10,M053,1,M05.3
+Connective tissue disorder,I10,M058,1,M05.8
+Connective tissue disorder,I10,M059,1,M05.9
+Connective tissue disorder,I10,M060,1,M06.0
+Connective tissue disorder,I10,M063,1,M06.3
+Connective tissue disorder,I10,M069,1,M06.9
+Connective tissue disorder,I10,M050,1,M05.0
+Connective tissue disorder,I10,M052,1,M05.2
+Connective tissue disorder,I10,M051,1,M05.1
+Connective tissue disorder,I10,M353,1,M35.3
+Peptic ulcer,I9,531,1,531
+Peptic ulcer,I9,532,1,532
+Peptic ulcer,I9,533,1,533
+Peptic ulcer,I9,534,1,534
+Peptic ulcer,I10,K25,1,K25
+Peptic ulcer,I10,K26,1,K26
+Peptic ulcer,I10,K27,1,K27
+Peptic ulcer,I10,K28,1,K28
+Liver disease,I9,5712,1,571.2
+Liver disease,I9,5714,1,571.4
+Liver disease,I9,5715,1,571.5
+Liver disease,I9,5716,1,571.6
+Liver disease,I10,K702,1,K70.2
+Liver disease,I10,K703,1,K70.3
+Liver disease,I10,K73,1,K73
+Liver disease,I10,K717,1,K71.7
+Liver disease,I10,K740,1,K74.0
+Liver disease,I10,K742,1,K74.2
+Liver disease,I10,K746,1,K74.6
+Liver disease,I10,K743,1,K74.3
+Liver disease,I10,K744,1,K74.4
+Liver disease,I10,K745,1,K74.5
+Diabetes,I9,2500,1,250.0
+Diabetes,I9,2501,1,250.1
+Diabetes,I9,2502,1,250.2
+Diabetes,I9,2503,1,250.3
+Diabetes,I9,2507,1,250.7
+Diabetes,I10,E109,1,E10.9
+Diabetes,I10,E119,1,E11.9
+Diabetes,I10,E139,1,E13.9
+Diabetes,I10,E149,1,E14.9
+Diabetes,I10,E101,1,E10.1
+Diabetes,I10,E111,1,E11.1
+Diabetes,I10,E131,1,E13.1
+Diabetes,I10,E141,1,E14.1
+Diabetes,I10,E105,1,E10.5
+Diabetes,I10,E115,1,E11.5
+Diabetes,I10,E135,1,E13.5
+Diabetes,I10,E145,1,E14.5
+Diabetes complications,I9,2504,2,250.4
+Diabetes complications,I9,2505,2,250.5
+Diabetes complications,I9,2506,2,250.6
+Diabetes complications,I10,E102,2,E10.2
+Diabetes complications,I10,E112,2,E11.2
+Diabetes complications,I10,E132,2,E13.2
+Diabetes complications,I10,E142 ,2,E14.2 
+Diabetes complications,I10,E103,2,E10.3
+Diabetes complications,I10,E113,2,E11.3
+Diabetes complications,I10,E133,2,E13.3
+Diabetes complications,I10,E143 ,2,E14.3 
+Diabetes complications,I10,E104,2,E10.4
+Diabetes complications,I10,E114,2,E11.4
+Diabetes complications,I10,E134,2,E13.4
+Diabetes complications,I10,E144,2,E14.4
+Paraplegia,I9,342,2,342
+Paraplegia,I9,3441,2,344.1
+Paraplegia,I10,G81 ,2,G81. 
+Paraplegia,I10,G041,2,G04.1
+Paraplegia,I10,G820,2,G82.0
+Paraplegia,I10,G821,2,G82.1
+Paraplegia,I10,G822,2,G82.2
+Renal disease,I9,582,2,582
+Renal disease,I9,5830,2,583.0
+Renal disease,I9,5831,2,583.1
+Renal disease,I9,5832,2,583.2
+Renal disease,I9,5833,2,583.3
+Renal disease,I9,5835,2,583.5
+Renal disease,I9,5836,2,583.6
+Renal disease,I9,5837,2,583.7
+Renal disease,I9,5834,2,583.4
+Renal disease,I9,5855,2,585.5
+Renal disease,I10,N03,2,N03
+Renal disease,I10,N052,2,N05.2
+Renal disease,I10,N053,2,N05.3
+Renal disease,I10,N054,2,N05.4
+Renal disease,I10,N055,2,N05.5
+Renal disease,I10,N056,2,N05.6
+Renal disease,I10,N072,2,N07.2
+Renal disease,I10,N073,2,N07.3
+Renal disease,I10,N074,2,N07.4
+Renal disease,I10,N01,2,N01
+Renal disease,I10,N18,2,N18
+Renal disease,I10,N19,2,N19
+Renal disease,I10,N25,2,N25
+Cancer,I9,14,2,#VALUE!
+Cancer,I9,15,2,#VALUE!
+Cancer,I9,16,2,#VALUE!
+Cancer,I9,18,2,#VALUE!
+Cancer,I9,170,2,170
+Cancer,I9,171,2,171
+Cancer,I9,172,2,172
+Cancer,I9,174,2,174
+Cancer,I9,175,2,175
+Cancer,I9,176,2,176
+Cancer,I9,179,2,179
+Cancer,I9,190,2,190
+Cancer,I9,191,2,191
+Cancer,I9,192,2,192
+Cancer,I9,193,2,193
+Cancer,I9,194,2,194
+Cancer,I9,1950,2,195.0
+Cancer,I9,1951,2,195.1
+Cancer,I9,1952,2,195.2
+Cancer,I9,1953,2,195.3
+Cancer,I9,1954,2,195.4
+Cancer,I9,1955,2,195.5
+Cancer,I9,1958,2,195.8
+Cancer,I9,200,2,200
+Cancer,I9,201,2,201
+Cancer,I9,202,2,202
+Cancer,I9,203,2,203
+Cancer,I9,204,2,204
+Cancer,I9,205,2,205
+Cancer,I9,206,2,206
+Cancer,I9,207,2,207
+Cancer,I9,208,2,208
+Cancer,I10,C0,2,#VALUE!
+Cancer,I10,C1,2,#VALUE!
+Cancer,I10,C2,2,#VALUE!
+Cancer,I10,C3,2,#VALUE!
+Cancer,I10,C40,2,C40
+Cancer,I10,C41,2,C41
+Cancer,I10,C43,2,C43
+Cancer,I10,C45,2,C45
+Cancer,I10,C46,2,C46
+Cancer,I10,C47,2,C47
+Cancer,I10,C48,2,C48
+Cancer,I10,C49,2,C49
+Cancer,I10,C5,2,#VALUE!
+Cancer,I10,C6,2,#VALUE!
+Cancer,I10,C70,2,C70
+Cancer,I10,C71,2,C71
+Cancer,I10,C72,2,C72
+Cancer,I10,C73,2,C73
+Cancer,I10,C74,2,C74
+Cancer,I10,C75,2,C75
+Cancer,I10,C76,2,C76
+Cancer,I10,C80,2,C80
+Cancer,I10,C81,2,C81
+Cancer,I10,C82,2,C82
+Cancer,I10,C83,2,C83
+Cancer,I10,C84,2,C84
+Cancer,I10,C85,2,C85
+Cancer,I10,C883,2,C88.3
+Cancer,I10,C887,2,C88.7
+Cancer,I10,C889,2,C88.9
+Cancer,I10,C900,2,C90.0
+Cancer,I10,C901,2,C90.1
+Cancer,I10,C91,2,C91
+Cancer,I10,C92,2,C92
+Cancer,I10,C93,2,C93
+Cancer,I10,C940,2,C94.0
+Cancer,I10,C941,2,C94.1
+Cancer,I10,C942,2,C94.2
+Cancer,I10,C943,2,C94.3
+Cancer,I10,C9451,2,C94.51
+Cancer,I10,C947,2,C94.7
+Cancer,I10,C95,2,C95
+Cancer,I10,C96,2,C96
+Metastatic cancer,I9,196,3,196
+Metastatic cancer,I9,197,3,197
+Metastatic cancer,I9,198,3,198
+Metastatic cancer,I9,1990,3,199.0
+Metastatic cancer,I9,1991,3,199.1
+Metastatic cancer,I10,C77,3,C77
+Metastatic cancer,I10,C78,3,C78
+Metastatic cancer,I10,C79,3,C79
+Metastatic cancer,I10,C80,3,C80
+Severe liver disease,I9,5722,3,572.2
+Severe liver disease,I9,5723,3,572.3
+Severe liver disease,I9,5724,3,572.4
+Severe liver disease,I9,5728,3,572.8
+Severe liver disease,I10,K729,3,K72.9
+Severe liver disease,I10,K766,3,K76.6
+Severe liver disease,I10,K767,3,K76.7
+Severe liver disease,I10,K721,3,K72.1
+HIV,I9,42,6,#VALUE!
+HIV,I9,43,6,#VALUE!
+HIV,I9,44,6,#VALUE!
+HIV,I10,B20,6,B20
+HIV,I10,B21,6,B21
+HIV,I10,B22,6,B22
+HIV,I10,B23,6,B23
+HIV,I10,B24,6,B24
