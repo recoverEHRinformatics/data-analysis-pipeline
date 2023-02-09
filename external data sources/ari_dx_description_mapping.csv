@@ -1,0 +1,344 @@
+﻿vocabulary_id,concept_code,concept_name
+ICD10CM,J01.0,Acute maxillary sinusitis
+ICD10CM,J01.1,Acute frontal sinusitis
+ICD10CM,J01.2,Acute ethmoidal sinusitis
+ICD10CM,J01.3,Acute sphenoidal sinusitis
+ICD10CM,J01.4,Acute pansinusitis
+ICD10CM,J01.8,Other acute sinusitis
+ICD10CM,J01.9,"Acute sinusitis, unspecified"
+ICD10CM,J02,Acute pharyngitis
+ICD10CM,J03,Acute tonsillitis
+ICD10CM,J03.0,Streptococcal tonsillitis
+ICD10CM,J03.8,Acute tonsillitis due to other specified organisms
+ICD10CM,J03.9,"Acute tonsillitis, unspecified"
+ICD10CM,J04.1,Acute tracheitis
+ICD10CM,J04.3,"Supraglottitis, unspecified"
+ICD10CM,J05.1,Acute epiglottitis
+ICD10CM,J09.X,Influenza due to identified novel influenza A virus
+ICD10CM,J10,Influenza due to other identified influenza virus
+ICD10CM,J10.0,Influenza due to other identified influenza virus with pneumonia
+ICD10CM,J10.8,Influenza due to other identified influenza virus with other manifestations
+ICD10CM,J11,Influenza due to unidentified influenza virus
+ICD10CM,J11.0,Influenza due to unidentified influenza virus with pneumonia
+ICD10CM,J11.8,Influenza due to unidentified influenza virus with other manifestations
+ICD10CM,J12,"Viral pneumonia, not elsewhere classified"
+ICD10CM,J15,"Bacterial pneumonia, not elsewhere classified"
+ICD10CM,J15.2,Pneumonia due to staphylococcus
+ICD10CM,J16,"Pneumonia due to other infectious organisms, not elsewhere classified"
+ICD10CM,J18,"Pneumonia, unspecified organism"
+ICD10CM,J20,Acute bronchitis
+ICD10CM,J21,Acute bronchiolitis
+ICD10CM,J41,Simple and mucopurulent chronic bronchitis
+ICD10CM,J96,"Respiratory failure, not elsewhere classified"
+ICD10CM,P22,Respiratory distress of newborn
+ICD10CM,R50,Fever of other and unknown origin
+ICD10CM,B01.2,Varicella pneumonia
+ICD10CM,B05.2,Measles complicated by pneumonia
+ICD10CM,B33.8,Other specified viral diseases
+ICD10CM,B34.8,Other viral infections of unspecified site
+ICD10CM,J00,Acute nasopharyngitis [common cold]
+ICD10CM,J02.0,Streptococcal pharyngitis
+ICD10CM,J02.8,Acute pharyngitis due to other specified organisms
+ICD10CM,J02.9,"Acute pharyngitis, unspecified"
+ICD10CM,J04.0,Acute laryngitis
+ICD10CM,J04.2,Acute laryngotracheitis
+ICD10CM,J05.0,Acute obstructive laryngitis [croup]
+ICD10CM,J06.0,Acute laryngopharyngitis
+ICD10CM,J06.9,"Acute upper respiratory infection, unspecified"
+ICD10CM,J09,Influenza due to certain identified influenza viruses
+ICD10CM,J10.1,Influenza due to other identified influenza virus with other respiratory manifestations
+ICD10CM,J12.0,Adenoviral pneumonia
+ICD10CM,J12.1,Respiratory syncytial virus pneumonia
+ICD10CM,J12.2,Parainfluenza virus pneumonia
+ICD10CM,J12.3,Human metapneumovirus pneumonia
+ICD10CM,J12.8,Other viral pneumonia
+ICD10CM,J12.9,"Viral pneumonia, unspecified"
+ICD10CM,J13,Pneumonia due to Streptococcus pneumoniae
+ICD10CM,J14,Pneumonia due to Hemophilus influenzae
+ICD10CM,J15.0,Pneumonia due to Klebsiella pneumoniae
+ICD10CM,J15.1,Pneumonia due to Pseudomonas
+ICD10CM,J15.3,"Pneumonia due to streptococcus, group B"
+ICD10CM,J15.4,Pneumonia due to other streptococci
+ICD10CM,J15.5,Pneumonia due to Escherichia coli
+ICD10CM,J15.6,Pneumonia due to other Gram-negative bacteria
+ICD10CM,J15.7,Pneumonia due to Mycoplasma pneumoniae
+ICD10CM,J15.8,Pneumonia due to other specified bacteria
+ICD10CM,J15.9,Unspecified bacterial pneumonia
+ICD10CM,J16.0,Chlamydial pneumonia
+ICD10CM,J16.8,Pneumonia due to other specified infectious organisms
+ICD10CM,J17,Pneumonia in diseases classified elsewhere
+ICD10CM,J18.0,"Bronchopneumonia, unspecified organism"
+ICD10CM,J18.1,"Lobar pneumonia, unspecified organism"
+ICD10CM,J18.2,"Hypostatic pneumonia, unspecified organism"
+ICD10CM,J18.8,"Other pneumonia, unspecified organism"
+ICD10CM,J18.9,"Pneumonia, unspecified organism"
+ICD10CM,J20.0,Acute bronchitis due to Mycoplasma pneumoniae
+ICD10CM,J20.1,Acute bronchitis due to Hemophilus influenzae
+ICD10CM,J20.2,Acute bronchitis due to streptococcus
+ICD10CM,J20.3,Acute bronchitis due to coxsackievirus
+ICD10CM,J20.4,Acute bronchitis due to parainfluenza virus
+ICD10CM,J20.5,Acute bronchitis due to respiratory syncytial virus
+ICD10CM,J20.6,Acute bronchitis due to rhinovirus
+ICD10CM,J20.7,Acute bronchitis due to echovirus
+ICD10CM,J20.8,Acute bronchitis due to other specified organisms
+ICD10CM,J20.9,"Acute bronchitis, unspecified"
+ICD10CM,J21.0,Acute bronchiolitis due to respiratory syncytial virus
+ICD10CM,J21.8,Acute bronchiolitis due to other specified organisms
+ICD10CM,J21.9,"Acute bronchiolitis, unspecified"
+ICD10CM,J22,Unspecified acute lower respiratory infection
+ICD10CM,J39.8,Other specified diseases of upper respiratory tract
+ICD10CM,J39.9,"Disease of upper respiratory tract, unspecified"
+ICD10CM,J40,"Bronchitis, not specified as acute or chronic"
+ICD10CM,J41.0,Simple chronic bronchitis
+ICD10CM,J41.1,Mucopurulent chronic bronchitis
+ICD10CM,J41.8,Mixed simple and mucopurulent chronic bronchitis
+ICD10CM,J42,Unspecified chronic bronchitis
+ICD10CM,J44.0,Chronic obstructive pulmonary disease with (acute) lower respiratory infection
+ICD10CM,J68.0,"Bronchitis and pneumonitis due to chemicals, gases, fumes and vapors"
+ICD10CM,J80,Acute respiratory distress syndrome
+ICD10CM,J85.1,Abscess of lung with pneumonia
+ICD10CM,J96.0,Acute respiratory failure
+ICD10CM,J96.1,Chronic respiratory failure
+ICD10CM,J96.2,Acute and chronic respiratory failure
+ICD10CM,J96.9,"Respiratory failure, unspecified"
+ICD10CM,J98.8,Other specified respiratory disorders
+ICD10CM,P22.0,Respiratory distress syndrome of newborn
+ICD10CM,P22.8,Other respiratory distress of newborn
+ICD10CM,P22.9,"Respiratory distress of newborn, unspecified"
+ICD10CM,P23.0,Congenital pneumonia due to viral agent
+ICD10CM,P28.5,Respiratory failure of newborn
+ICD10CM,R05,Cough
+ICD10CM,R09.2,Respiratory arrest
+ICD10CM,R50.2,Drug induced fever
+ICD10CM,R50.8,Other specified fever
+ICD10CM,R50.9,"Fever, unspecified"
+ICD10CM,A02.22,Salmonella pneumonia
+ICD10CM,J01.10,"Acute frontal sinusitis, unspecified"
+ICD10,J02.0,Streptococcal pharyngitis
+ICD10,J04.0,Acute laryngitis
+ICD10CM,J04.10,Acute tracheitis without obstruction
+ICD10CM,J04.11,Acute tracheitis with obstruction
+ICD10CM,J05.10,Acute epiglottitis without obstruction
+ICD10,J11.0,"Influenza with pneumonia, virus not identified"
+ICD10CM,J15.211,Pneumonia due to Methicillin susceptible Staphylococcus aureus
+ICD10,J17,Pneumonia in diseases classified elsewhere
+ICD10,J39.9,"Disease of upper respiratory tract, unspecified"
+ICD10CM,J96.92,"Respiratory failure, unspecified with hypercapnia"
+ICD10,J98.8,Other specified respiratory disorders
+ICD10CM,R06.02,Shortness of breath
+ICD10,P22.0,Respiratory distress syndrome of newborn
+ICD10CM,J96.21,Acute and chronic respiratory failure with hypoxia
+ICD10CM,J84.11,Idiopathic interstitial pneumonia
+ICD10,J41.1,Mucopurulent chronic bronchitis
+ICD10,J41.0,Simple chronic bronchitis
+ICD10,J20.2,Acute bronchitis due to streptococcus
+ICD10,J15.7,Pneumonia due to Mycoplasma pneumoniae
+ICD10,J15.6,Pneumonia due to other Gram-negative bacteria
+ICD10,J15.3,"Pneumonia due to streptococcus, group B"
+ICD10,J15.1,Pneumonia due to Pseudomonas
+ICD10,J12.1,Respiratory syncytial virus pneumonia
+ICD10CM,J11.82,Influenza due to unidentified influenza virus with myocarditis
+ICD10CM,J10.01,Influenza due to other identified influenza virus with the same other identified influenza virus pneumonia
+ICD10CM,J03.00,"Acute streptococcal tonsillitis, unspecified"
+ICD10,J01.9,"Acute sinusitis, unspecified"
+ICD10,B01.2,Varicella pneumonia
+ICD10CM,A37.81,Whooping cough due to other Bordetella species with pneumonia
+ICD10CM,A37.11,Whooping cough due to Bordetella parapertussis with pneumonia
+ICD10,J96.9,"Respiratory failure, unspecified"
+ICD10CM,J96.11,Chronic respiratory failure with hypoxia
+ICD10CM,J95.821,Acute postprocedural respiratory failure
+ICD10,J12.8,Other viral pneumonia
+ICD10CM,J11.83,Influenza due to unidentified influenza virus with otitis media
+ICD10,J05.1,Acute epiglottitis
+ICD10CM,J03.90,"Acute tonsillitis, unspecified"
+ICD10,J02.9,"Acute pharyngitis, unspecified"
+ICD10CM,J01.91,"Acute recurrent sinusitis, unspecified"
+ICD10CM,J01.90,"Acute sinusitis, unspecified"
+ICD10CM,J01.30,"Acute sphenoidal sinusitis, unspecified"
+ICD10CM,J01.20,"Acute ethmoidal sinusitis, unspecified"
+ICD10CM,J21.1,Acute bronchiolitis due to human metapneumovirus
+ICD10CM,J09.11,Influenza due to identified novel H1N1 influenza virus with respiratory manifestations
+ICD10CM,J09.01,Influenza due to identified avian influenza virus with respiratory manifestations
+ICD10CM,J11.1,Influenza due to unidentified influenza virus with other respiratory manifestations
+ICD10CM,R06.03,Acute respiratory distress
+ICD10CM,R50.81,Fever presenting with conditions classified elsewhere
+ICD10,R05,Cough
+ICD10,P22,Respiratory distress of newborn
+ICD10CM,J84.111,"Idiopathic interstitial pneumonia, not otherwise specified"
+ICD10,J44.0,Chronic obstructive pulmonary disease with acute lower respiratory infection
+ICD10,J20.1,Acute bronchitis due to Haemophilus influenzae
+ICD10,J18.9,"Pneumonia, unspecified"
+ICD10CM,J15.20,"Pneumonia due to staphylococcus, unspecified"
+ICD10CM,J10.83,Influenza due to other identified influenza virus with otitis media
+ICD10,J10.1,"Influenza with other respiratory manifestations, seasonal influenza virus identified"
+ICD10,J10.0,"Influenza with pneumonia, seasonal influenza virus identified"
+ICD10CM,J09.X3,Influenza due to identified novel influenza A virus with gastrointestinal manifestations
+ICD10CM,J09.098,Influenza due to identified avian influenza virus with other manifestations
+ICD10CM,J05.11,Acute epiglottitis with obstruction
+ICD10,J03.0,Streptococcal tonsillitis
+ICD10CM,J01.41,Acute recurrent pansinusitis
+ICD10,J01.0,Acute maxillary sinusitis
+ICD10CM,A37.01,Whooping cough due to Bordetella pertussis with pneumonia
+ICD10CM,R50.84,Febrile nonhemolytic transfusion reaction
+ICD10,P22.9,"Respiratory distress of newborn, unspecified"
+ICD10CM,J96.20,"Acute and chronic respiratory failure, unspecified whether with hypoxia or hypercapnia"
+ICD10CM,J96.02,Acute respiratory failure with hypercapnia
+ICD10CM,J09.X1,Influenza due to identified novel influenza A virus with pneumonia
+ICD10CM,J09.03,Influenza due to identified avian influenza virus with gastrointestinal manifestations
+ICD10CM,J01.31,Acute recurrent sphenoidal sinusitis
+ICD10,P28.5,Respiratory failure of newborn
+ICD10,P23.0,Congenital pneumonia due to viral agent
+ICD10,J96,"Respiratory failure, not elsewhere classified"
+ICD10CM,J84.2,Lymphoid interstitial pneumonia
+ICD10,J41.8,Mixed simple and mucopurulent chronic bronchitis
+ICD10,J22,Unspecified acute lower respiratory infection
+ICD10,J20.4,Acute bronchitis due to parainfluenza virus
+ICD10,J17.1,Pneumonia in viral diseases classified elsewhere
+ICD10,J13,Pneumonia due to Streptococcus pneumoniae
+ICD10CM,J11.00,Influenza due to unidentified influenza virus with unspecified type of pneumonia
+ICD10CM,J10.89,Influenza due to other identified influenza virus with other manifestations
+ICD10CM,J10.81,Influenza due to other identified influenza virus with encephalopathy
+ICD10CM,J09.092,Influenza due to identified avian influenza virus with otitis media
+ICD10,J01.8,Other acute sinusitis
+ICD10,J01.1,Acute frontal sinusitis
+ICD10,B34.8,Other viral infections of unspecified site
+ICD10,R50.9,"Fever, unspecified"
+ICD10,P22.8,Other respiratory distress of newborn
+ICD10CM,J96.22,Acute and chronic respiratory failure with hypercapnia
+ICD10,J21,Acute bronchiolitis
+ICD10,J20.6,Acute bronchitis due to rhinovirus
+ICD10,J20,Acute bronchitis
+ICD10,J15.5,Pneumonia due to Escherichia coli
+ICD10,J15,"Bacterial pneumonia, not elsewhere classified"
+ICD10,J14,Pneumonia due to Haemophilus influenzae
+ICD10CM,J11.89,Influenza due to unidentified influenza virus with other manifestations
+ICD10CM,J11.81,Influenza due to unidentified influenza virus with encephalopathy
+ICD10,J11.8,"Influenza with other manifestations, virus not identified"
+ICD10CM,J11.08,Influenza due to unidentified influenza virus with specified pneumonia
+ICD10CM,J09.X9,Influenza due to identified novel influenza A virus with other manifestations
+ICD10CM,J01.80,Other acute sinusitis
+ICD10CM,J01.01,Acute recurrent maxillary sinusitis
+ICD10,J41,Simple and mucopurulent chronic bronchitis
+ICD10,J16,"Pneumonia due to other infectious organisms, not elsewhere classified"
+ICD10,J11,"Influenza, virus not identified"
+ICD10,J10,Influenza due to identified seasonal influenza virus
+ICD10CM,J84.115,Respiratory bronchiolitis interstitial lung disease
+ICD10,J17.8,Pneumonia in other diseases classified elsewhere
+ICD10,J17.0,Pneumonia in bacterial diseases classified elsewhere
+ICD10CM,J15.29,Pneumonia due to other staphylococcus
+ICD10,J15.2,Pneumonia due to staphylococcus
+ICD10,J15.0,Pneumonia due to Klebsiella pneumoniae
+ICD10,J12.0,Adenoviral pneumonia
+ICD10CM,J10.82,Influenza due to other identified influenza virus with myocarditis
+ICD10CM,J10.08,Influenza due to other identified influenza virus with other specified pneumonia
+ICD10CM,J09.191,Influenza due to identified novel H1N1 influenza virus with myocarditis
+ICD10CM,J09.091,Influenza due to identified avian influenza virus with myocarditis
+ICD10CM,J09.019,Influenza due to identified avian influenza virus with unspecified type of pneumonia
+ICD10CM,J09.018,Influenza due to identified avian influenza virus with other specified type of pneumonia
+ICD10CM,J03.91,"Acute recurrent tonsillitis, unspecified"
+ICD10CM,J03.80,Acute tonsillitis due to other specified organisms
+ICD10,B33.8,Other specified viral diseases
+ICD10CM,B06.81,Rubella pneumonia
+ICD10,B05.2,Measles complicated by pneumonia
+ICD10,J20.0,Acute bronchitis due to Mycoplasma pneumoniae
+ICD10,J18.8,"Other pneumonia, organism unspecified"
+ICD10CM,J09.119,Influenza due to identified novel H1N1 influenza virus with unspecified type of pneumonia
+ICD10CM,J09.010,Influenza due to identified avian influenza virus with identified avian influenza pneumonia
+ICD10CM,J03.81,Acute recurrent tonsillitis due to other specified organisms
+ICD10,J01.4,Acute pansinusitis
+ICD10,J09,Influenza due to identified zoonotic or pandemic influenza virus
+ICD10CM,J96.91,"Respiratory failure, unspecified with hypoxia"
+ICD10CM,J96.00,"Acute respiratory failure, unspecified whether with hypoxia or hypercapnia"
+ICD10,J96.0,Acute respiratory failure
+ICD10,J68.0,"Bronchitis and pneumonitis due to chemicals, gases, fumes and vapours"
+ICD10CM,R56.00,Simple febrile convulsions
+ICD10,R50.2,Drug-induced fever
+ICD10CM,P28.81,Respiratory arrest of newborn
+ICD10CM,P28.11,Resorption atelectasis without respiratory distress syndrome
+ICD10CM,J95.82,Postprocedural respiratory failure
+ICD10CM,J10.2,Influenza due to other identified influenza virus with gastrointestinal manifestations
+ICD10CM,J09.118,Influenza due to identified novel H1N1 influenza virus with other specified type of pneumonia
+ICD10,J04.1,Acute tracheitis
+ICD10,J03.9,"Acute tonsillitis, unspecified"
+ICD10CM,J01.81,Other acute recurrent sinusitis
+ICD10CM,J01.11,Acute recurrent frontal sinusitis
+ICD10CM,J01.00,"Acute maxillary sinusitis, unspecified"
+ICD10CM,J96.12,Chronic respiratory failure with hypercapnia
+ICD10,J85.1,Abscess of lung with pneumonia
+ICD10,J40,"Bronchitis, not specified as acute or chronic"
+ICD10,J18.0,"Bronchopneumonia, unspecified"
+ICD10,J17.2,Pneumonia in mycoses
+ICD10,J15.8,Other bacterial pneumonia
+ICD10CM,J12.89,Other viral pneumonia
+ICD10CM,J11.2,Influenza due to unidentified influenza virus with gastrointestinal manifestations
+ICD10,J10.8,"Influenza with other manifestations, seasonal influenza virus identified"
+ICD10CM,J04.31,"Supraglottitis, unspecified, with obstruction"
+ICD10,B20.6,HIV disease resulting in Pneumocystis jirovecii pneumonia
+ICD10,R50,Fever of other and unknown origin
+ICD10CM,J96.01,Acute respiratory failure with hypoxia
+ICD10CM,J84.116,Cryptogenic organizing pneumonia
+ICD10,J21.9,"Acute bronchiolitis, unspecified"
+ICD10CM,J15.21,Pneumonia due to staphylococcus aureus
+ICD10CM,J12.81,Pneumonia due to SARS-associated coronavirus
+ICD10CM,J10.00,Influenza due to other identified influenza virus with unspecified type of pneumonia
+ICD10,J05.0,Acute obstructive laryngitis [croup]
+ICD10CM,J95.822,Acute and chronic postprocedural respiratory failure
+ICD10CM,J84.117,Desquamative interstitial pneumonia
+ICD10CM,J47.0,Bronchiectasis with acute lower respiratory infection
+ICD10,J39.8,Other specified diseases of upper respiratory tract
+ICD10,J21.1,Acute bronchiolitis due to human metapneumovirus
+ICD10,J20.9,"Acute bronchitis, unspecified"
+ICD10,J20.8,Acute bronchitis due to other specified organisms
+ICD10,J18.2,"Hypostatic pneumonia, unspecified"
+ICD10,J18.1,"Lobar pneumonia, unspecified"
+ICD10,J15.4,Pneumonia due to other streptococci
+ICD10CM,J09.X2,Influenza due to identified novel influenza A virus with other respiratory manifestations
+ICD10CM,J09.13,Influenza due to identified novel H1N1 influenza virus with gastrointestinal manifestations
+ICD10CM,J09.12,Influenza due to identified novel H1N1 influenza virus with other respiratory manifestations
+ICD10,J06.9,"Acute upper respiratory infection, unspecified"
+ICD10,J06.0,Acute laryngopharyngitis
+ICD10CM,J04.30,"Supraglottitis, unspecified, without obstruction"
+ICD10,J04.2,Acute laryngotracheitis
+ICD10,J03.8,Acute tonsillitis due to other specified organisms
+ICD10,J02.8,Acute pharyngitis due to other specified organisms
+ICD10,J00,Acute nasopharyngitis [common cold]
+ICD10CM,B97.89,Other viral agents as the cause of diseases classified elsewhere
+ICD10,R09.2,Respiratory arrest
+ICD10,J96.1,Chronic respiratory failure
+ICD10,J15.9,"Bacterial pneumonia, unspecified"
+ICD10CM,J15.212,Pneumonia due to Methicillin resistant Staphylococcus aureus
+ICD10,J12.3,Human metapneumovirus pneumonia
+ICD10,J12.2,Parainfluenza virus pneumonia
+ICD10,J11.1,"Influenza with other respiratory manifestations, virus not identified"
+ICD10CM,J09.198,Influenza due to identified novel H1N1 influenza virus with other manifestations
+ICD10,J02,Acute pharyngitis
+ICD10CM,J01.40,"Acute pansinusitis, unspecified"
+ICD10CM,J95.851,Ventilator associated pneumonia
+ICD10,J80,Adult respiratory distress syndrome
+ICD10,J42,Unspecified chronic bronchitis
+ICD10,J21.0,Acute bronchiolitis due to respiratory syncytial virus
+ICD10,J20.7,Acute bronchitis due to echovirus
+ICD10,J20.3,Acute bronchitis due to coxsackievirus
+ICD10,J16.8,Pneumonia due to other specified infectious organisms
+ICD10,J12.9,"Viral pneumonia, unspecified"
+ICD10,J12,"Viral pneumonia, not elsewhere classified"
+ICD10CM,J09.190,Influenza due to identified novel H1N1 influenza virus with encephalopathy
+ICD10CM,J03.01,Acute recurrent streptococcal tonsillitis
+ICD10,J03,Acute tonsillitis
+ICD10,J01.3,Acute sphenoidal sinusitis
+ICD10CM,B77.81,Ascariasis pneumonia
+ICD10,R50.8,Other specified fever
+ICD10CM,A54.84,Gonococcal pneumonia
+ICD10CM,A37.91,"Whooping cough, unspecified species with pneumonia"
+ICD10CM,A01.03,Typhoid pneumonia
+ICD10CM,J96.10,"Chronic respiratory failure, unspecified whether with hypoxia or hypercapnia"
+ICD10,J21.8,Acute bronchiolitis due to other specified organisms
+ICD10,J20.5,Acute bronchitis due to respiratory syncytial virus
+ICD10,J18,"Pneumonia, organism unspecified"
+ICD10,J17.3,Pneumonia in parasitic diseases
+ICD10,J16.0,Chlamydial pneumonia
+ICD10CM,J09.192,Influenza due to identified novel H1N1 influenza virus with otitis media
+ICD10CM,J09.110,Influenza due to identified novel H1N1 influenza virus with identified novel H1N1 influenza pneumonia
+ICD10CM,J09.090,Influenza due to identified avian influenza virus with encephalopathy
+ICD10CM,J09.02,Influenza due to identified avian influenza virus with other respiratory manifestations
+ICD10,J01.2,Acute ethmoidal sinusitis
