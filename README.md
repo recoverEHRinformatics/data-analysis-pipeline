@@ -3,4 +3,8 @@ This repository provides a harmoinzed pipeline with a set of pre-defined fucntio
 
 You may learn more about each module and the pre-defined functions described in details by reading the notebooks [here](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/notebooks/). You may also refer to [implementation.ipynb](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/notebooks/implementation.ipynb) for a comprehensive example of a data analysis pipeline from start to finish.
 
-![data analysis pipeline overview](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/misc/data_analysis_pipeline.png?raw=true)
+## High-level
+![data analysis pipeline overview](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/misc/high_level_pipeline.JPG?raw=true)
+
+## PASC algorithm
+![PASC algorithm](https://github.com/recoverEHRinformatics/data-analysis-pipeline/blob/main/misc/pasc.JPG?raw=true)
