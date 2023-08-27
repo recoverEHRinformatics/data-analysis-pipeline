@@ -55,6 +55,10 @@ data_types_dict = {
     'index_type': 'category',
     'index_result': 'category',
 
+    # flu
+    'flu_date': 'datetime64[ns]',
+    'flu_type': 'category',
+
     # death
     'death_date': 'datetime64[ns]',
 
