@@ -49,6 +49,7 @@ data_types_dict = {
 
     # diagnosis
     'dx': 'category',
+    'dx_source': 'category',
 
     # index_all
     'index_date': 'datetime64[ns]',
