@@ -75,7 +75,18 @@ data_types_dict = {
     'rx_order_date': 'datetime64[ns]',
     'rx_start_date': 'datetime64[ns]',
     'rx_end_date': 'datetime64[ns]',
-    'rxnorm_cui': 'category'
+    'rxnorm_cui': 'category',
+
+    # procedure
+    'px': 'category',
+    'px_date': 'datetime64[ns]',
+
+    # lds_address_history
+    'address_period_start': 'datetime64[ns]',
+
+    # immunization
+    'vx_record_date': 'datetime64[ns]',
+    'vx_admin_date': 'datetime64[ns]'
 }
 
 def optimize_memory(df:pd.DataFrame, data_types_dict:dict):
