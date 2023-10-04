@@ -532,7 +532,7 @@ def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_m
             error_msg = "You must provide an index table with an index_date column"
             return print(error_msg)
         
-    charlson_dx = charlson_dx[charlson_dx['admit_date'] < charlson_dx['index_date']]
+    charlson_dx = charlson_dx[charlson_dx['admit_date'] <= charlson_dx['index_date']]
 
     charlson_dx = charlson_dx[['syn_pt_id', 'admit_date', 'dx', 'category', 'score']].drop_duplicates()
 
