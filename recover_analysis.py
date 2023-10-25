@@ -317,180 +317,6 @@ def get_pasc_all(diagnosis:Union[pd.DataFrame, dd.DataFrame], PASC_definition:Un
 
     return pasc_diagnoses
 
-
-# def get_pasc_category(diagnosis: pd.DataFrame, index: pd.DataFrame, PASC_definition_reference: pd.DataFrame, patid_column='syn_pt_id', category='ccsr_category'):
-#     '''get_pasc_category function finds the date of first instance of all PASC like diagnosis for each patient.
-#     The resulting dataframes from this function will be used to identify date of PASC diagnosis and subphenotypes. 
-
-#     Args:
-#         diagnosis (pd.DataFrame): standard diagnosis table from PCORnet CDM containing all diagnoses for patients.
-#         index (pd.DataFrame): custom index table created using a pre-defined function containing the index dates for each patient.
-#         PASC_definition_reference (pd.DataFrame): a reference spreadsheet containing all ICD-10 codes and diagnosis categories of PASC-like symptoms.
-#         patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
-#         category (str, optional): Diagnosis category column in the PASC_definition_reference table. Defaults to 'ccsr_category'.
-
-#     Returns:
-#         A tuple of two pandas dataframe. Both dataframes have one unique row per patient and each diagnosis category as a column. 
-#         categorized_diff: the values for each column is the time difference (in days) between the index date and the first instance of the diagnosis
-#         categorized_date: the date of first instance of the diagnosis
-#     '''
-
-#     # merge with index table to get the first instance of index event
-#     dx = pd.merge(
-#         diagnosis,
-#         index[[patid_column, 'index_date']],
-#         on=patid_column, how='inner'
-#     ).drop_duplicates()
-
-#     # calculate the difference in days between the diagnosis date and index event date
-#     # date_diff_from_index < 0 means the diagnosis was recorded before the index event date
-#     # date_diff_from_index > 0 means the diagnosis was recorded after the index event date
-#     dx['date_diff_from_index'] = (
-#         dx['admit_date'] - dx['index_date']) / np.timedelta64(1, 'D')
-
-#     # select the columns needed and drop duplicates
-#     dx.drop(columns=['site'], inplace=True)
-#     dx.drop_duplicates(inplace=True)
-
-#     # join to PASC_defintion to get the dx category if it is a PASC dx
-#     dx = pd.merge(
-#         dx,
-#         PASC_definition_reference[['i10_code', category]],
-#         left_on='dx',
-#         right_on='i10_code',
-#         how='inner'
-#     )
-
-#     # throw away any diagnoses in the blackout period and
-#     # balckout period is defined as 7 days before and 30 days after the index date
-#     dx = dx[
-#         ~(dx['date_diff_from_index'].between(-7, 30, inclusive='neither'))
-#     ]
-
-#     # throw away any diagnoses 180 days after the index date
-#     dx = dx[dx['date_diff_from_index'] <= 180]
-
-#     # select the necessary columns and drop the duplicates
-#     # by only including the CCSR category column (i.e. ccsr_category) and excluding the ICD-10 code column (i10_code)
-#     # we ensure that if there are several ICD-10 codes with the same category, we count them as the same
-#     dx = dx[[patid_column, 'date_diff_from_index', category, 'admit_date']].copy()
-#     dx.drop_duplicates(inplace=True)
-#     dx.reset_index(drop=True, inplace=True)
-
-#     # create a pivot table with each column representing the smallest value of date_diff_from_index
-#     # negative number means this is not a PASC diagnosis and it was previously present for this patient
-#     # positive number means this is a PASC diagnosis and the patient developed this diagnosis after index event date
-#     # 0 as a value means this diagnosis was developed at the same time as the index event date
-#     # NaN means the patient has never been diagnosed with this particular diagnosis
-#     categorized_diff = dx.pivot_table(
-#         index=[patid_column],
-#         columns=[category],
-#         values='date_diff_from_index',
-#         aggfunc='min')
-#     categorized_diff.drop_duplicates(inplace=True)
-
-#     # create a pivot table with each column representing the date of the first instance of a diagnosis in that category
-#     # NaN means the patient has never been diagnosed
-#     categorized_date = dx.sort_values(
-#         [patid_column, 'admit_date']).drop_duplicates(patid_column)
-#     categorized_date = categorized_date.pivot(
-#         index=[patid_column], columns=[category], values='admit_date')
-
-#     categorized_date.reset_index(inplace=True)
-#     categorized_diff.reset_index(level=patid_column, inplace=True)
-
-#     return categorized_diff, categorized_date
-
-
-# def get_pasc_subphenotype(pasc_diff: pd.DataFrame, patid_column='syn_pt_id'):
-#     '''get_pasc_subphenotype function identifies one subphenotype per patient
-
-#     Args:
-#         pasc_diff (pd.DataFrame): the first returned result (i.e. categorized_diff) from get_pasc_category function
-#         patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
-
-#     Returns:
-#         pd.DataFrame: a dataframe with a unique row per patient indicating one PASC subphenotype
-#     '''
-
-#     # set patid_column as the index
-#     temp_df = pasc_diff.copy()
-#     temp_df.set_index(patid_column, inplace=True)
-#     # replace negative values with nan to only focus on the real PASC diagnoses
-#     # negative values represent pre-existing diagnosis and are not PASC
-#     temp_df[temp_df < 0] = np.nan
-
-#     # find the column NAME that has the smallest value (.idxmin(axis=1))
-#     # column NAME will indicate the subphenotype name
-#     pasc_subphenotype = pd.DataFrame(temp_df.idxmin(
-#         axis=1, skipna=True), columns=['subphenotype_name'])
-
-#     # find the smallest column VALUE (.min(axis=1))
-#     # the smallest value across all columns indicate date difference (in days) between the index date and the first instance of PASC diagnosis
-#     pasc_subphenotype = pasc_subphenotype.merge(
-#         pd.DataFrame(temp_df.min(axis=1, skipna=True),
-#                      columns=['subphenotype_days']),
-#         on=patid_column,
-#         how='inner'
-#     )
-
-#     # resetting the index will make the patid_column to be a regular column rather than the index for this dataframe
-#     pasc_subphenotype.reset_index(inplace=True)
-
-#     # categorize the interval
-#     pasc_subphenotype['subphenotype_interval'] = np.select(
-#         [
-#             pasc_subphenotype['subphenotype_days'].between(30, 59, inclusive='both'), 
-#             pasc_subphenotype['subphenotype_days'].between(60, 89, inclusive='both'), 
-#             pasc_subphenotype['subphenotype_days'].between(90, 119, inclusive='both'),
-#             pasc_subphenotype['subphenotype_days'].between(120, 149, inclusive='left'), 
-#             pasc_subphenotype['subphenotype_days'] >= 150
-#         ], [
-#             '30-59', 
-#             '60-89', 
-#             '90-119', 
-#             '120-149', 
-#             '150+'
-#         ], default=np.NaN
-#     )
-
-#     pasc_subphenotype = pasc_subphenotype.query("~subphenotype_name.isnull()")
-#     pasc_subphenotype.reset_index(drop=True, inplace=True)
-
-#     return pasc_subphenotype
-
-
-# def get_pasc_list(index:pd.DataFrame, pasc_yn:pd.DataFrame, pasc_subphenotype:pd.DataFrame, patid_column='syn_pt_id'):
-#     '''get_pasc_list function takes in a series of custom tables resulting from other pre-defined function to generate a list of patients
-#     with their PASC status, subphenotype, and the index date. Please note this function only works for when the patient has one subphenotype.
-
-#     Args:
-#         index (pd.DataFrame): dataframe generated by get_index_event function.
-#         pasc_yn (pd.DataFrame): dataframe with information whether a diagnosis category is PASC or pre-existing.
-#         pasc_subphenotype (pd.DataFrame): dataframe generated by get_pasc_subphenotype function.
-#         patid_column (str, optional): the column in the dataframe indicating the patient identifier. Defaults to 'syn_pt_id'.
-
-#     Returns:
-#         pd.DataFrame: a dataframe with PASC and subphenotype information for all patients with an index date.
-#     '''
-
-#     # list of all patients with an index date
-#     pasc_list = index[[patid_column, 'index_date']].copy()
-
-#     # dichotomous variable indicating PASC status
-#     pasc_yn.set_index(patid_column, inplace=True)
-#     pasc_list['pasc_yn'] = np.where(pasc_list[patid_column].isin(list(pasc_yn[(pasc_yn == 1).any(axis=1)].index)), 1, 0)
-#     pasc_yn.reset_index(inplace=True)
-
-#     pasc_list = pd.merge(
-#         pasc_list,
-#         pasc_subphenotype,
-#         on='syn_pt_id',
-#         how='left'
-#     )
-
-#     return pasc_list
-
 ############################################################################
 ######################## charlson comorbidity index ########################
 ############################################################################
@@ -562,176 +388,81 @@ def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_m
 
     return charlson_dx
 
-#####################################################################
-######################## demographic cleanup ########################
-#####################################################################
+# ############################################################################
+# ######################## charlson comorbidity index ########################
+# ############################################################################
+# def categorize_charlson(diagnosis, charlson_mapping, patid_column='syn_pt_id', **kwargs):
+#     charlson_dx = diagnosis.copy()
+    
+#     # function to find a matching ICD code prefix and return the category
+#     def find_category(dx_df):
+#         prefixes = charlson_mapping['dx_clean'].unique()
+#         for prefix in prefixes:
+#             if dx_df.startswith(prefix):
+#                 category = charlson_mapping[charlson_mapping['dx_clean'] == prefix]['category'].iloc[0]
+#                 # score = mapping_df[mapping_df['dx_clean'] == prefix]['score'].iloc[0]
+#                 return category
+#         return None
 
-# def categorize_age(df: pd.DataFrame, age_column: str):
-#     '''categorize_age function takes a table containing a column with age of the patient and categorize the patient's age.
+#     # find the category based on the ICD-10 codes it starts with and the mapping table
+#     charlson_dx['category'] = charlson_dx['dx'].apply(find_category)
+#     # create a smaller subset of the diagnosis table containing only the charlson diagnoses
+#     charlson_dx = charlson_dx[charlson_dx['category'].notnull()].reset_index(drop=True)
 
-#     Args:
-#         df (pd.DataFrame): Any dataframe with an age column.
-#         age_column (str): Name of the column that contains the age of the patient. The column values should be int or float. This is often age of patient as of index event.
+#     # create a mapping dictionary to assign score
+#     score_mapping_dict = charlson_mapping[['category', 'score']].set_index('category').to_dict()['score']
+#     # assign score based on the category using the mapping dictionary
+#     charlson_dx['score'] = charlson_dx['category'].map(score_mapping_dict)
 
-#     Returns:
-#         pd.series: returns a series that can be directly assigned as a new column to any dataframe.
-#     '''
+#     # save the index argument if provided
+#     index = kwargs.get('index', None)
 
-#     age_group = np.select(
+#     # Check if the diagnosis table contains an index_date column
+#     if isinstance(index, pd.DataFrame):
+#         if 'index_to_admit' not in diagnosis.columns:
+#             # merge with index table to get the first instance of index event
+#             charlson_dx = pd.merge(
+#                 charlson_dx,
+#                 index[[patid_column, 'index_date']],
+#                 on=patid_column, how='inner'
+#             ).drop_duplicates()
+#         else:
+#             error_msg = "You provided an index table, and your diagnosis table already has an index_date column \
+#                 \nSuggested solutions: \
+#                 \n\t- Drop the following columns in your diagnosis table: 'index_date' and 'index_to_admit' \
+#                 \n\t- Or remove the index table from this function and keep the 'index_date' and 'index_to_admit' columns in the diagnosis table"
+#             return print(error_msg)
+        
+#     else:
+#         if 'index_to_admit' not in diagnosis.columns:
+#             error_msg = "You must provide an index table with an index_date column"
+#             return print(error_msg)
+        
+#     charlson_dx = charlson_dx[charlson_dx['admit_date'] <= charlson_dx['index_date']]
+
+#     charlson_dx = charlson_dx[['syn_pt_id', 'admit_date', 'dx', 'category', 'score']].drop_duplicates()
+
+#     charlson_dx = charlson_dx.pivot_table(
+#         index='syn_pt_id',
+#         columns='category',
+#         values='score'
+#     ).fillna(0)
+
+#     charlson_dx['CCI_score'] = charlson_dx.sum(axis=1)
+
+#     charlson_dx['CCI_category'] = np.select(
 #         [
-#             round(df[age_column]).between(0, 1, inclusive='left'),
-#             round(df[age_column]).between(1, 4, inclusive='both'),
-#             round(df[age_column]).between(5, 9, inclusive='both'),
-#             round(df[age_column]).between(10, 15, inclusive='both'),
-#             round(df[age_column]).between(16, 20, inclusive='both'),
-#             round(df[age_column]).between(21, 35, inclusive='both'),
-#             round(df[age_column]).between(36, 45, inclusive='both'),
-#             round(df[age_column]).between(46, 55, inclusive='both'),
-#             round(df[age_column]).between(56, 65, inclusive='both'),
-#             round(df[age_column]) > 65
+#             charlson_dx['CCI_score']==0,
+#             charlson_dx['CCI_score'].between(1,3,inclusive='both'),
+#             charlson_dx['CCI_score']>=4
 #         ],
 #         [
-#             '<1',
-#             '1-4',
-#             '5-9',
-#             '10-15',
-#             '16-20',
-#             '21-35',
-#             '36-45',
-#             '46-55',
-#             '56-65',
-#             '66+'
+#             '0',
+#             '1-3',
+#             '4+'
 #         ],
-#         default='unknown'
 #     )
+#     charlson_dx = charlson_dx.reset_index(drop=False)
 
-#     return age_group
-
-
-# def clean_sex(df: pd.DataFrame, sex_column='sex'):
-#     '''clean_sex function replaces PCORnet CDM value sets of sex with a human-readble value taken from the official PCORnet CDM dictionary. 
-
-#     Args:
-#         df (pd.DataFrame): Any dataframe with ethnicity column with standard reference terminology values of PCORnet CDM. This is often the standard DEMOGRAPHIC table.
-#         sex_column (str, optional): Name of the column containing the sex information. Defaults to 'sex'.
-
-#     Returns:
-#         pd.DataFrame: the same input dataframe (i.e. df) with the values of sex_column replaced accordingly.
-#     '''
-#     df.replace({
-#         sex_column: {
-#             'A': 'Other/Missing/Unknown',
-#             'F': 'Female',
-#             'M': 'Male',
-#             'NI': 'Other/Missing/Unknown',
-#             'UN': 'Other/Missing/Unknown',
-#             'OT': 'Other/Missing/Unknown'
-#         }}, inplace=True)
-
-#     return df
-
-
-# def clean_race(df: pd.DataFrame, race_column='race'):
-#     '''clean_race function replaces PCORnet CDM value sets of race with a human-readble value taken from the official PCORnet CDM dictionary.
-
-#     Args:
-#         df (pd.DataFrame): Any dataframe with RACE column with standard reference terminology values of PCORnet CDM. This is often the standard DEMOGRAPHIC table.
-#         race_column (str, optional): Name of the column containing the race information. Defaults to 'race'.
-
-#     Returns:
-#         pd.DataFrame: the same input dataframe (i.e. df) with the values of race_column replaced accordingly.
-#     '''
-
-#     df.replace({
-#         race_column: {
-#             '01': 'American Indian or Alaska Native',
-#             '1': 'American Indian or Alaska Native', # not a standard reference terminology
-#             '02': 'Asian',
-#             '2': 'Asian',  # not a standard reference terminology
-#             '03': 'Black or African American',
-#             '3': 'Black or African American',  # not a standard reference terminology
-#             '04': 'Native Hawaiian or Other Pacific Islander',
-#             '4': 'Native Hawaiian or Other Pacific Islander', # not a standard reference terminology
-#             '05': 'White',
-#             '5': 'White',  # not a standard reference terminology
-#             '06': 'Multiple race',
-#             '6': 'Multiple race',  # not a standard reference terminology
-#             '07': 'Refuse to answer',
-#             '7': 'Refuse to answer',  # not a standard reference terminology
-#             'NI': 'No race information',
-#             '0': 'Unknown',  # not a standard reference terminology
-#             'UN': 'Unknown',
-#             'OT': 'Other'
-#         }}, inplace=True)
-
-#     return df
-
-
-# def clean_ethnicity(df: pd.DataFrame, ethnicity_column='hispanic'):
-#     '''clean_ethnicity function replaces PCORnet CDM value sets of ethnicity with a human-readble value taken from the official PCORnet CDM dictionary.
-
-#     Args:
-#         df (pd.DataFrame): Any dataframe with ethnicity column with standard reference terminology values of PCORnet CDM. This is often the standard DEMOGRAPHIC table.
-#         ethnicity_column (str, optional): Name of the column containing the ethnicity information. Defaults to 'hispanic'.
-
-#     Returns:
-#         pd.DataFrame: the same input dataframe (i.e. df) with the values of ethnicity_column replaced accordingly.
-#     '''
-
-#     df.replace({
-#         ethnicity_column: {
-#             'Y': 'Hispanic',
-#             'N': 'Not hispanic',
-#             'R': 'Refuse to answer',
-#             'NI': 'No ethnicity information',
-#             'UN': 'Unknown',
-#             'OT': 'Other'
-#         }}, inplace=True)
-
-#     return df
-
-
-# def categorize_race_ethnicity(df: pd.DataFrame, ethnicity_column='hispanic', race_column='race'):
-#     '''categorize_race_ethnicity function uses the already processed race and ethnicity values to combine and categorize the patients per qtwg's categories.
-
-#     Args:
-#         df (pd.DataFrame): Any dataframe with ethnicity column with standard reference terminology values of PCORnet CDM. This is often the standard DEMOGRAPHIC table.
-#         ethnicity_column (str, optional): Name of the column containing the ethnicity information. Defaults to 'hispanic'.
-#         race_column (str, optional): Name of the column containing the race information. Defaults to 'race'.
-
-#     Returns:
-#         pd.series: returns a series that can be directly assigned as a new column to any dataframe.
-#     '''
-
-#     race_ethnicity = np.select(
-#         [
-#             ((df[ethnicity_column].isin(['Not hispanic'])) & (df[race_column].isin(['White']))),
-#             ((df[ethnicity_column].isin(['Not hispanic'])) & (df[race_column].isin(['Black or African American']))),
-#             (df[ethnicity_column].isin(['Hispanic'])),
-#             ((df[ethnicity_column].isin(['Not hispanic'])) & (df[race_column].isin(['Asian']))),
-#             (df[race_column].isin(['Native Hawaiian or Other Pacific Islander'])),
-#             (df[race_column].isin(['American Indian or Alaska Native'])),
-#             (
-#                 (df[ethnicity_column].isin(['Other']))
-#                 | (df[race_column].isin(['Other', 'Multiple race']))
-#             ), 
-#             (
-#                 (df[ethnicity_column].isin(
-#                     ['Unknown', 'Refuse to answer', 'No ethnicity information', '']))
-#                 | (df[race_column].isin(['Unknown', 'Refuse to answer', 'No race information', '']))
-#             )
-#         ], [
-#             'Non-Hispanic white',
-#             'Non-Hispanic black',
-#             'Hispanic',
-#             'Non-hispanic Asian',
-#             'Native Hawaiian or Other Pacific Islander',
-#             'American Indian or Alaska Native',
-#             'Other',
-#             'Missing/Unknown'
-#         ], default='ISSUE WITH RACE OR ETHNICITY COLUMN'
-#     )
-
-#     return race_ethnicity
-
+#     return charlson_dx
 
