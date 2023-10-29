@@ -387,13 +387,12 @@ def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_m
     charlson_dx = charlson_dx.reset_index(drop=False)
 
     return charlson_dx
-
-# ############################################################################
+############################################################################
 # ######################## charlson comorbidity index ########################
 # ############################################################################
-# def categorize_charlson(diagnosis, charlson_mapping, patid_column='syn_pt_id', **kwargs):
+# def categorize_charlson(diagnosis, charlson_mapping, demographic, patid_column='syn_pt_id', **kwargs):
 #     charlson_dx = diagnosis.copy()
-    
+
 #     # function to find a matching ICD code prefix and return the category
 #     def find_category(dx_df):
 #         prefixes = charlson_mapping['dx_clean'].unique()
@@ -437,16 +436,16 @@ def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_m
 #         if 'index_to_admit' not in diagnosis.columns:
 #             error_msg = "You must provide an index table with an index_date column"
 #             return print(error_msg)
-        
+
 #     charlson_dx = charlson_dx[charlson_dx['admit_date'] <= charlson_dx['index_date']]
 
-#     charlson_dx = charlson_dx[['syn_pt_id', 'admit_date', 'dx', 'category', 'score']].drop_duplicates()
+#     charlson_dx = charlson_dx[['syn_pt_id', 'index_date', 'admit_date', 'dx', 'category', 'score']].drop_duplicates()
 
 #     charlson_dx = charlson_dx.pivot_table(
-#         index='syn_pt_id',
+#         index=['syn_pt_id', 'index_date'],
 #         columns='category',
 #         values='score'
-#     ).fillna(0)
+#     ).fillna(0).reset_index(drop=False)
 
 #     charlson_dx['CCI_score'] = charlson_dx.sum(axis=1)
 
@@ -462,7 +461,54 @@ def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_m
 #             '4+'
 #         ],
 #     )
-#     charlson_dx = charlson_dx.reset_index(drop=False)
+
+
+#     charlson_dx = charlson_dx.merge(
+#         demographic[['syn_pt_id', 'birth_date']],
+#         on='syn_pt_id',
+#         how='left'
+#     )
+
+#     # adding age score and update the CCI score and category in a separate column
+#     charlson_dx['age_as_of_index'] = (charlson_dx['index_date'] - charlson_dx['birth_date']) / np.timedelta64(1, 'Y')
+
+#     charlson_dx['age_score'] = np.select(
+#         [
+#             charlson_dx['age_as_of_index'] < 50,
+#             charlson_dx['age_as_of_index'].between(50, 60, inclusive='left'),
+#             charlson_dx['age_as_of_index'].between(60, 70, inclusive='left'),
+#             charlson_dx['age_as_of_index'].between(70, 80, inclusive='left'),
+#             charlson_dx['age_as_of_index'] >= 80
+#         ],
+#         [
+#             0,
+#             1,
+#             2,
+#             3,
+#             4
+#         ],
+#         default= -111 # to catch errors, no patient should have this scroe
+#     )
+
+#     if charlson_dx[charlson_dx['age_score']<0]['syn_pt_id'].nunique() > 0:
+#         print("WARNING THERE ARE PATIENTS WITH WRONG AGE SCORE CALCULATED")
+#         print("PLEASE QA PATIENTS WITH AGE_SCORE LESS THAN 0")
+
+#     charlson_dx.drop(columns=['index_date', 'birth_date', 'age_as_of_index'], inplace=True)
+
+#     charlson_dx['CCI_score_age_based'] = charlson_dx['CCI_score'] + charlson_dx['age_score']
+
+#     charlson_dx['CCI_category_age_based'] = np.select(
+#         [
+#             charlson_dx['CCI_score_age_based']==0,
+#             charlson_dx['CCI_score_age_based'].between(1,3,inclusive='both'),
+#             charlson_dx['CCI_score_age_based']>=4
+#         ],
+#         [
+#             '0',
+#             '1-3',
+#             '4+'
+#         ],
+#     )
 
 #     return charlson_dx
-
