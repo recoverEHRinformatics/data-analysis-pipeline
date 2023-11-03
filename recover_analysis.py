@@ -76,6 +76,9 @@ data_types_dict = {
     'rx_start_date': 'datetime64[ns]',
     'rx_end_date': 'datetime64[ns]',
     'rxnorm_cui': 'category',
+    'atc_code': 'category',
+    'atc_name': 'category',
+    'rxnorm_name': 'category',
 
     # procedure
     'px': 'category',
