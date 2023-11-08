@@ -89,7 +89,13 @@ data_types_dict = {
 
     # immunization
     'vx_record_date': 'datetime64[ns]',
-    'vx_admin_date': 'datetime64[ns]'
+    'vx_admin_date': 'datetime64[ns]',
+
+    # lab_result_cm
+    'result_date': 'datetime64[ns]',
+    'result_qual': 'category',
+    'result_modifier': 'category',
+    'result_num': 'float32'
 }
 
 def optimize_memory(df:pd.DataFrame, data_types_dict:dict):
