@@ -148,7 +148,7 @@ def optimize_memory(df:pd.DataFrame, data_types_dict:dict):
 #####################################################################
 ######################## raw data extraction ########################
 #####################################################################
-def extract_raw_data(query: str, site_names: list, source_data_path: str, data_name: str, database_engine: str):
+def extract_raw_data(query: str, site_names: list, source_data_path: str, data_name: str, database_engine: str, saved_format='parquet'):
     '''extract_raw_data is a function to query the live data for all sites in the analysis, concatenate them together, and save them as parquet files.
 
     Args:
@@ -214,11 +214,21 @@ def extract_raw_data(query: str, site_names: list, source_data_path: str, data_n
     final_df = optimize_memory(df=final_df, data_types_dict=data_types_dict)
     print("memory optimization is done\n\n")
 
-    # saving the table with all sites data concatenated as parquet format in source data folder
-    pq.write_table(pa.Table.from_pandas(
-        final_df), f"{source_data_path}/{data_name}.parquet", compression="BROTLI")
-    print(f"All sites {data_name} data have been saved as a parquet file in:")
-    print(f"{source_data_path}/{data_name}.parquet")
+    if saved_format.lower() == 'parquet':
+        # saving the table with all sites data concatenated as PARQUET format in source data folder
+        pq.write_table(pa.Table.from_pandas(final_df), f"{source_data_path}/{data_name}.parquet", compression="BROTLI")
+        print(f"All sites {data_name} data have been saved as a parquet file in:")
+        print(f"{source_data_path}/{data_name}.parquet")
+    elif saved_format.lower() == 'csv':
+            # saving the table with all sites data concatenated as CSV format in source data folder
+            final_df.to_csv(f"{source_data_path}/{data_name}.csv")
+            print(f"All sites {data_name} data have been saved as a csv file in:")
+            print(f"{source_data_path}/{data_name}.csv")
+    else: # default is PARQUET format
+        # saving the table with all sites data concatenated as PARQUET format in source data folder
+        pq.write_table(pa.Table.from_pandas(final_df), f"{source_data_path}/{data_name}.parquet", compression="BROTLI")
+        print(f"All sites {data_name} data have been saved as a parquet file in:")
+        print(f"{source_data_path}/{data_name}.parquet")
 
     # optional lines to generate information about all sites data
     print(f"The final table shape: {final_df.shape}")
