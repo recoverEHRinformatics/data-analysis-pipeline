@@ -237,6 +237,63 @@ def extract_raw_data(query: str, site_names: list, source_data_path: str, data_n
 
     return final_df
 
+#########################################################################################
+########################### site specific raw data extraction ###########################
+#########################################################################################
+def extract_raw_data_site(query: str, site_names: list, source_data_path: str, data_name: str, database_engine: str, saved_format='parquet'):
+
+    counter = 1
+    section_title = "raw data extraction"
+    section_border =  "=" * (len(section_title) + 22)
+    section_boundary = "=" * (len(section_title) + 22)
+    print(f"""{section_border}\n{"="*10} {section_title} {"="*10}\n{section_border}""")
+
+    for site in site_names:
+        try:
+            print(f"Query {counter}. {site}'s {data_name} started")
+
+            # replace where input query indicates "SiteSchema" with the site's real schema
+            modified_query = query.replace("SiteSchema", f"{site}")
+
+            df = pd.read_sql(
+                modified_query, database_engine
+            )
+            # creating an additional column to indicate the site
+            df['site'] = site
+            print(f"{site}'s {data_name} query is finished")
+
+            # memory optimization
+            df = optimize_memory(df=df, data_types_dict=data_types_dict)
+            print("memory optimization is done\n\n")
+
+            if saved_format.lower() == 'parquet':
+                # saving the table with all sites data concatenated as PARQUET format in source data folder
+                pq.write_table(pa.Table.from_pandas(df), f"{source_data_path}/{site}/{data_name}.parquet", compression="BROTLI")
+                print(f"{site}'s {data_name} data have been saved as a parquet file in:")
+                print(f"{source_data_path}/{site}/{data_name}.parquet")
+            elif saved_format.lower() == 'csv':
+                    # saving the table with all sites data concatenated as CSV format in source data folder
+                    df.to_csv(f"{source_data_path}/{site}/{data_name}.csv")
+                    print(f"{site}'s {data_name} data have been saved as a csv file in:")
+                    print(f"{source_data_path}/{site}/{data_name}.csv")
+            else: # default is PARQUET format
+                # saving the table with all sites data concatenated as PARQUET format in source data folder
+                pq.write_table(pa.Table.from_pandas(df), f"{source_data_path}/{site}/{data_name}.parquet", compression="BROTLI")
+                print(f"{site}'s {data_name} data have been saved as a parquet file in:")
+                print(f"{source_data_path}/{site}/{data_name}.parquet")
+
+        # error-agnostic pass which will leave out the individual site
+        # make sure to investigate further why the query failed for a specific site
+        # best way to investigate the issue is to run the SQL query in PgAdmin
+        # possible issues could be data type mismatch for certain columns
+        except:
+            error_msg = f"= {counter}. {site}'s {data_name} WAS NOT PROCESSED ="
+            print(section_boundary)
+            print(error_msg)
+            print(section_boundary)
+        counter += 1
+        print(section_boundary)
+
 ##############################################################################
 ########################### identify PASC patients ###########################
 ##############################################################################
