@@ -392,67 +392,62 @@ def get_pasc_all(diagnosis:Union[pd.DataFrame, dd.DataFrame], PASC_definition:Un
     pasc_diagnoses = pasc_diagnoses.compute()
 
     return pasc_diagnoses
-
 ############################################################################
 ######################## charlson comorbidity index ########################
 ############################################################################
-def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_mapping, patid_column='syn_pt_id', **kwargs):
-    if isinstance(diagnosis, pd.DataFrame):
-        charlson_dx = dd.from_pandas(diagnosis, npartitions= 2 * multiprocessing.cpu_count()) # TODO: look into picking the optimal number
+def categorize_charlson(diagnosis, charlson_mapping, **kwargs):
 
-    # create a smaller subset of the diagnosis table containing only the charlson diagnoses
-    charlson_dx = dd.merge(
-        charlson_dx
-        ,charlson_mapping[['dx_clean', 'category', 'score']]
-        ,left_on='dx'
-        ,right_on='dx_clean'
-        ,how='inner'
+    # ensuring all diagnoses are prior to index date
+    charlson_output = diagnosis[diagnosis['index_to_admit']>0][['syn_pt_id', 'dx']].drop_duplicates().reset_index(drop=True)
+
+    # create a dataframe with unique diagnoses present in the clinical data
+    charlson_output_unique = pd.DataFrame()
+    charlson_output_unique['dx'] = list(set(charlson_output['dx']))
+
+    # function to find a matching ICD code prefix and return the category
+    def find_category(dx_df):
+        prefixes = charlson_mapping['dx_clean'].unique()
+        for prefix in prefixes:
+            if dx_df.startswith(prefix):
+                category = charlson_mapping[charlson_mapping['dx_clean'] == prefix]['category'].iloc[0]
+                # score = mapping_df[mapping_df['dx_clean'] == prefix]['score'].iloc[0]
+                return category
+        return None
+
+    # find the category based on the ICD-10 codes it starts with and the mapping table
+    charlson_output_unique['category'] = charlson_output_unique['dx'].apply(find_category)
+
+    charlson_output_unique = charlson_output_unique[charlson_output_unique['category'].notnull()].reset_index(drop=True)
+
+    # create a mapping dictionary to assign score
+    score_mapping_dict = charlson_mapping[['category', 'score']].set_index('category').to_dict()['score']
+    # assign score based on the category using the mapping dictionary
+    charlson_output_unique['score'] = charlson_output_unique['category'].map(score_mapping_dict)
+
+    # get score per pt per dx
+    charlson_output = pd.merge(
+        charlson_output,
+        charlson_output_unique,
+        on='dx',
+        how='inner'
     )
-    # charlson_dx = charlson_dx[['syn_pt_id', 'admit_date', 'index_date', 'index_to_admit', 'dx', 'category', 'score']].drop_duplicates()
 
-    # save the index argument if provided
-    index = kwargs.get('index', None)
-
-    # Check if the diagnosis table contains an index_date column
-    if isinstance(index, pd.DataFrame) or isinstance(index, dd.DataFrame):
-        if 'index_to_admit' not in diagnosis.columns:
-            # merge with index table to get the first instance of index event
-            charlson_dx = dd.merge(
-                charlson_dx,
-                index[[patid_column, 'index_date']],
-                on=patid_column, how='inner'
-            ).drop_duplicates()
-        else:
-            error_msg = "You provided an index table, and your diagnosis table already has an index_date column \
-                \nSuggested solutions: \
-                \n\t- Drop the following columns in your diagnosis table: 'index_date' and 'index_to_admit' \
-                \n\t- Or remove the index table from this function and keep the 'index_date' and 'index_to_admit' columns in the diagnosis table"
-            return print(error_msg)
-        
-    else:
-        if 'index_to_admit' not in diagnosis.columns:
-            error_msg = "You must provide an index table with an index_date column"
-            return print(error_msg)
-        
-    charlson_dx = charlson_dx[charlson_dx['admit_date'] <= charlson_dx['index_date']]
-
-    charlson_dx = charlson_dx[['syn_pt_id', 'admit_date', 'dx', 'category', 'score']].drop_duplicates()
-
-    charlson_dx = charlson_dx.compute()
-
-    charlson_dx = charlson_dx.pivot_table(
-        index='syn_pt_id',
+    # get score per category
+    charlson_output = charlson_output.pivot_table(
+        index=['syn_pt_id'],
         columns='category',
         values='score'
-    ).fillna(0)
+    ).fillna(0).reset_index(drop=False)
 
-    charlson_dx['CCI_score'] = charlson_dx.sum(axis=1)
+    # sum all the categories scores
+    charlson_output['CCI_score'] = charlson_output.sum(axis=1)
 
-    charlson_dx['CCI_category'] = np.select(
+    # categorize the scores
+    charlson_output['CCI_category'] = np.select(
         [
-            charlson_dx['CCI_score']==0,
-            charlson_dx['CCI_score'].between(1,3,inclusive='both'),
-            charlson_dx['CCI_score']>=4
+            charlson_output['CCI_score']==0,
+            charlson_output['CCI_score'].between(1,3,inclusive='both'),
+            charlson_output['CCI_score']>=4
         ],
         [
             '0',
@@ -460,9 +455,9 @@ def categorize_charlson(diagnosis: Union[pd.DataFrame, dd.DataFrame], charlson_m
             '4+'
         ],
     )
-    charlson_dx = charlson_dx.reset_index(drop=False)
 
-    return charlson_dx
+    return charlson_output
+    
 ############################################################################
 # ######################## charlson comorbidity index ########################
 # ############################################################################
