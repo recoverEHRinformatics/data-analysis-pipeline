@@ -1,6 +1,8 @@
 import os
 import requests
 import re
+import nbformat
+from nbformat.v4 import new_notebook, new_code_cell, new_markdown_cell
 
 def print_in_box(text):
     # Split the text into lines
@@ -251,4 +253,10 @@ def main():
     create_raw_data_extraction_notebook(main_path)
 
 if __name__ == "__main__":
+    import os
+    import requests
+    import re
+    import nbformat
+    from nbformat.v4 import new_notebook, new_code_cell, new_markdown_cell
+    
     main()
