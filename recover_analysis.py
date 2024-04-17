@@ -398,7 +398,7 @@ def get_pasc_all(diagnosis:Union[pd.DataFrame, dd.DataFrame], PASC_definition:Un
 def categorize_charlson(diagnosis, charlson_mapping, **kwargs):
 
     # ensuring all diagnoses are prior to index date
-    charlson_output = diagnosis[diagnosis['index_to_admit']>0][['syn_pt_id', 'dx']].drop_duplicates().reset_index(drop=True)
+    charlson_output = diagnosis[diagnosis['index_to_admit']>=0][['syn_pt_id', 'dx']].drop_duplicates().reset_index(drop=True)
 
     # create a dataframe with unique diagnoses present in the clinical data
     charlson_output_unique = pd.DataFrame()
