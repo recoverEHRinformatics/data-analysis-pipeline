@@ -440,7 +440,7 @@ def categorize_charlson(diagnosis, charlson_mapping, **kwargs):
     ).fillna(0).reset_index(drop=False)
 
     # sum all the categories scores
-    charlson_output['CCI_score'] = charlson_output.sum(axis=1)
+    charlson_output[‘CCI_score'] = charlson_output.drop(['syn_pt_id'], axis=1).sum(axis=1)
 
     # categorize the scores
     charlson_output['CCI_category'] = np.select(
